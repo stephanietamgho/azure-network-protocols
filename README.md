@@ -367,10 +367,8 @@ Back to Wireshark on your Windows 10 VM, filter for DHCP traffic only.
 <br />
 
 <p>
-<img src="https://i.imgur.com/JIhQFjE.png" height="80%" width="80%" alt="Observe DHCP Traffic"/>
-</p>
-<p>
-Within the command line, use ipconfig /renew to attempt to issue your VM a new IP address
+<img src="https://i.imgur.com/JIhQFjE.png" height="80%" width="80%" alt="Observe DHCP Traffic"/><p/>
+<p> Within the command line, use ipconfig /renew to attempt to issue your VM a new IP address.
 </p>
 <br />
 <br />
