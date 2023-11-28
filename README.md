@@ -31,7 +31,7 @@ In this tutorial, we observe various network traffic to and from Azure Virtual M
 <h2>Actions and Observations</h2>
 
 
-<p><h2> Creation of Windows 10 and Ubuntu virtual machines </h2></p>
+<p><h2> CREATION OF OUR RESOURCES (WINDOWS AND LINUX VM + A RESOURCE GROUP) </h2></p>
 <p><h4>Create a Ressource Group</h4></p>
 <p>
 <img src="https://i.imgur.com/AdO9wfj..png" height="80%" width="80%" alt="Resource Group creation"/>
@@ -61,56 +61,67 @@ Choose a size (at least 2cpus) and set your username and password that will allo
 
 
 <p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/yU3gWbX.png" height="80%" width="80%" alt="Win 10 VM creation"/>
 </p>
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-<br />
-
-
-<p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+Click on Networking (two tabs after the main Basic page) and notice how your new Virtual Network (Vnet) and Subnet. Keep everything else as is. 
 </p>
 <br />
 
 
 <p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/wRP0TA2.png" height="80%" width="80%" alt="Win 10 VM Creation"/>
 </p>
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-<br />
-
-
-<p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+Then click Create + Review. Once you pass the validation phase, you may eventually click on "Create".
 </p>
 <br />
 
 
 <p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/7aBf8GC.png" height="80%" width="80%" alt="Win 10 VM Creation"/>
 </p>
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+You may check your Resource Group, a see a list of new resources your Windows VM is creating.
+</p>
+<br />
+
+<p>
+<img src="https://i.imgur.com/h7TpNKy.png" height="80%" width="80%" alt="Win 10 VM Creation"/>
+</p>
+<p>
+The deployment of your Windows VM is now complete. You may create your Ubuntu VM.
 </p>
 <br />
 
 
-
+<p><h4>Create a Linux (Ubuntu) VM</h4></p>
 <p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/9ei7Jg3.png" height="80%" width="80%" alt="Linux Ubuntu VM Creation"/>
 </p>
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+Create a Linux Ubuntu VM. Make sure to select the previously created Resource Group and Vnet.
+</p>
+<br />
+
+<p>
+<img src="https://i.imgur.com/V4KDbx3.png" height="80%" width="80%" alt="Linux Ubuntu VM Creation"/>
+</p>
+<p>
+Under "Administrator Account", check "Password". Then, set yuour username and password. For convenience, use your credentials previously created during your Windows 10 VM set up.
+</p>
+<br />
+<br />
+
+<p><h2> OBSERVE ICMP TRAFFIC </h2></p>
+<p>
+<img src="https://i.imgur.com/wh9FaI6.png" height="80%" width="80%" alt="Observe ICMP Traffic"/>
+</p>
+ <p>
+<img src="https://i.imgur.com/6UZZqEz.png" height="80%" width="80%" alt="Observe ICMP Traffic"/>
+</p>
+<p>
+Use Microsoft Remote Desktop to connect to your Windows 10 Virtual Machine.
 </p>
 <br />
 
