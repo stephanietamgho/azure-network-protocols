@@ -32,6 +32,7 @@ In this tutorial, we observe various network traffic to and from Azure Virtual M
 
 
 <p><h2> 1. CREATION OF OUR RESOURCES (WINDOWS AND LINUX VM + A RESOURCE GROUP) </h2></p>
+<br />
 <p><h3>Create a Ressource Group</h3></p>
 <p>
 <img src="https://i.imgur.com/AdO9wfj.png" height="80%" width="80%" alt="Resource Group creation"/>
@@ -40,7 +41,8 @@ In this tutorial, we observe various network traffic to and from Azure Virtual M
 In Microsoft Azure, create a Resource Group, give it a name and, assign it a server's location. Here, I chose West 2 Region but you can pick the one you want.
 </p>
 <br />
-
+<br />
+<br />
 
 <p><h3>Create a Windows 10 VM</h3></p>
 <p>
@@ -50,6 +52,7 @@ In Microsoft Azure, create a Resource Group, give it a name and, assign it a ser
 Create a Windows 10 Virtual Machine (VM). Make sure you select the previously created Resource Group. 
 </p>
 <br />
+<br />
 
 <p>
 <img src="https://i.imgur.com/QZtYL1c.png" height="80%" width="80%" alt="Win 10 VM Creation"/>
@@ -58,7 +61,7 @@ Create a Windows 10 Virtual Machine (VM). Make sure you select the previously cr
 Choose a size (at least 2cpus) and set your username and password that will allow you to connect to your VM remotely.
 </p>
 <br />
-
+<br />
 
 <p>
 <img src="https://i.imgur.com/yU3gWbX.png" height="80%" width="80%" alt="Win 10 VM creation"/>
@@ -67,7 +70,7 @@ Choose a size (at least 2cpus) and set your username and password that will allo
 Click on Networking (two tabs after the main Basic page) and notice how your new Virtual Network (Vnet) and Subnet. Keep everything else as is. 
 </p>
 <br />
-
+<br />
 
 <p>
 <img src="https://i.imgur.com/wRP0TA2.png" height="80%" width="80%" alt="Win 10 VM Creation"/>
@@ -76,7 +79,7 @@ Click on Networking (two tabs after the main Basic page) and notice how your new
 Then click Create + Review. Once you pass the validation phase, you may eventually click on "Create".
 </p>
 <br />
-
+<br />
 
 <p>
 <img src="https://i.imgur.com/7aBf8GC.png" height="80%" width="80%" alt="Win 10 VM Creation"/>
@@ -84,6 +87,7 @@ Then click Create + Review. Once you pass the validation phase, you may eventual
 <p>
 You may check your Resource Group, a see a list of new resources your Windows VM is creating.
 </p>
+<br />
 <br />
 
 <p>
@@ -93,7 +97,8 @@ You may check your Resource Group, a see a list of new resources your Windows VM
 The deployment of your Windows VM is now complete. You may create your Ubuntu VM.
 </p>
 <br />
-
+<br />
+<br />
 
 <p><h3>Create a Linux (Ubuntu) VM</h3></p>
 <p>
@@ -103,6 +108,7 @@ The deployment of your Windows VM is now complete. You may create your Ubuntu VM
 Create a Linux Ubuntu VM. Make sure to select the previously created Resource Group and Vnet.
 </p>
 <br />
+<br />
 
 <p>
 <img src="https://i.imgur.com/V4KDbx3.png" height="80%" width="80%" alt="Linux Ubuntu VM Creation"/>
@@ -110,6 +116,7 @@ Create a Linux Ubuntu VM. Make sure to select the previously created Resource Gr
 <p>
 Under "Administrator Account", check "Password". Then, set your username and password. For convenience, use your credentials previously created during your Windows 10 VM set up.
 </p>
+<br />
 <br />
 <br />
 
@@ -153,6 +160,8 @@ Open Wireshark, click "Ethernet" and on the search bar write "ICMP". Your Wiresh
 Back to Microft Azure, retrieve the private IP address of the Ubuntu VM, we will attempt to ping it within the the Windows 10 VM.
 </p>
 <br />
+<br />
+
 
 
 <p>
@@ -168,7 +177,7 @@ Back to Microft Azure, retrieve the private IP address of the Ubuntu VM, we will
 Back to your Windows VM, open "Powershell". Then ping your Ubuntu VM using the "ping" command and your Ubuntu private IP address. Here my private Linux IP is 10.0.0.5. You may notice in Wireshark (the pink screen) my private Windows 10 IP address (10.0.0.4) is sending ping requests to my Linux VM (10.0.0.5), and the latter replying.
 </p>
 <br />
-
+<br />
 
 <p>
 <img src="https://i.imgur.com/6ZXl3yZ.png" height="80%" width="80%" alt="Observe ICMP Traffic"/>
@@ -177,7 +186,7 @@ Back to your Windows VM, open "Powershell". Then ping your Ubuntu VM using the "
 You may also initiate perpetual ping request from your Windows to your Ubuntu, adding the "-t" to your command line, as an indication that you want to initiate perpetual ping.
 </p>
 <br />
-
+<br />
 
 <p>
 <img src="https://i.imgur.com/D17OoKh.png" height="80%" width="80%" alt="Observe ICMP Traffic"/>
@@ -199,7 +208,7 @@ Now, observe your Wireshark screen to witness the exchanges. When ready, press "
 Back to Azure, go to your Ubuntu machine setting, and go to "Networking". This is your Network Security Group (nsg) a type of virtual firewall. To your right, you will notice that you can add new rules. Click on it. We will add a rule to block inbound ICMP traffic.
 </p>
 <br />
-
+<br />
 
 <p>
 <img src="https://i.imgur.com/41kbHes.png" height="80%" width="80%" alt="Block ICMP Traffic"/>
@@ -208,7 +217,7 @@ Back to Azure, go to your Ubuntu machine setting, and go to "Networking". This i
 On the set up page, we will keep the sources and destination port ranges to (*) which is another way to say Any, and click on "ICMP" under Protocol and "Deny" for the action we want our firewall to take. The priority is set to 200, the most important priority level. So the firewall will start with that rule first before moving on to the subsequent rules with higher numbered prioirity level. Name your rule.
 </p>
 <br />
-
+<br />
 
 <p>
 <img src="https://i.imgur.com/RfNa5eZ.png" height="80%" width="80%" alt="Block ICMP Traffic"/>
@@ -216,6 +225,7 @@ On the set up page, we will keep the sources and destination port ranges to (*) 
 <p>
 Back to your Windows 10 VM and command line, try to Ping your Ubuntu VM. Notice as the request timed out as your Windows VM didn't receive any replies from your Ubuntu. Basically all ping requests were lost since there was no location that intercepted the ping to reply back.
 </p>
+<br />
 <br />
 
 <p>
@@ -225,173 +235,155 @@ Back to your Windows 10 VM and command line, try to Ping your Ubuntu VM. Notice 
 Notice this interaction on Wireshark.
 </p>
 <br />
-
+<br />
 
 <p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Observe ICMP Traffic"/>
+<img src="https://i.imgur.com/9bRHbdx.png" height="80%" width="80%" alt="Re-allowing ICMP Traffic"/>
+ </p>
+ <p>
+<img src="https://i.imgur.com/BmCEEgh.png" height="80%" width="80%" alt="Re-allowing ICMP Traffic"/>
 </p>
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+Back to your Ubuntu VM settings in Azure, go to your Networking session. We will re-authorize IMCP traffic. You can click directly on the Deny ICMP rule to delete it. Or edit the rule and click "Allow".
 </p>
+<br />
+<br />
+
+<p>
+<img src="https://i.imgur.com/16UDFjJ.png" height="80%" width="80%" alt="Observe ICMP Traffic"/>
+</p>
+<p>
+Let's ping Ubuntu again and observe the ICMP traffic in Wireshark. 
+</p>
+<br />
+<br />
+<br />
+
+
+<p><h2> 2. OBSERVE SSH TRAFFIC </h2></p>
+
+<p>
+<img src="https://i.imgur.com/qAZP859.png" height="80%" width="80%" alt="Observe SSH Traffic"/>
+</p>
+<p>
+Back to Wireshark on your Windows 10 VM, filter for SSH traffic only.
+</p>
+<br />
+<br />
+<p>
+<img src="https://i.imgur.com/UdqpvOH.png" height="80%" width="80%" alt="Observe SSH Traffic"/>
+</p>
+<p>
+Back to Powershell on your Windows 10 VM, "SSH into" your Ubuntu VM (via its private IP address). Press enter.
+</p>
+<br />
 <br />
 
 
 <p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Observe ICMP Traffic"/>
+<img src="https://i.imgur.com/si5A3oN.png" height="80%" width="80%" alt="Observe SSH Traffic"/>
 </p>
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+Since its our first try, a warning message will be displayed. Write yes. Then, enter your password. Note: You will not see the letters or keys on the screen so make sure you write the correct password. :) Once you're in, you have full command your Linux VM!
 </p>
+<br />
+<br />
+
+<p>
+<img src="https://i.imgur.com/5fgacre.png" height="80%" width="80%" alt="Observe SSH Traffic"/>
+</p>
+<p>
+Back to Wireshark, you can observe our first connections with Ubuntu VM. 
+</p>
+<br />
+<br />
+
+<p>
+<img src="https://i.imgur.com/puaboKW.png" height="80%" width="80%" alt="Observe SSH Traffic"/>
+</p>
+<p>
+<img src="https://i.imgur.com/NT98qlj.png" height="80%" width="80%" alt="Observe SSH Traffic"/>
+</p>
+<p>
+Add a few commands on powershell to observe the traffic on Wireshark. Then exit the SSH connection by typing "Exit" and pressing Enter.
+</p>
+<br />
+<br />
+
+
+
+<p><h2> 3. OBSERVE DNS TRAFFIC </h2></p>
+<p>
+<img src="https://i.imgur.com/YO7RwHC.png" height="80%" width="80%" alt="Observe DNS Traffic"/>
+</p>
+<p>
+Back to Wireshark on your Windows 10 VM, filter for DNS traffic only.
+</p>
+<br />
 <br />
 
 
 <p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Observe ICMP Traffic"/>
+<img src="https://i.imgur.com/PCQq5Bw.png" height="80%" width="80%" alt="Observe DNS Traffic"/>
 </p>
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+Back to Powershell on your Windows 10 VM, within the command line, use nslookup to see what disney.com's IP address is. 
 </p>
+<br />
+<br />
+
+<p>
+<img src="https://i.imgur.com/kUSuunI.png" height="80%" width="80%" alt="Observe DNS Traffic"/>
+</p>
+<p>
+Observe the DNS traffic being shown in Wireshark.
+</p>
+<br />
+<br />
+<br />
+
+
+<p><h2> 4. OBSERVE RDP TRAFFIC </h2></p>
+<p>
+<img src="https://i.imgur.com/fqH3MYS.png" height="80%" width="80%" alt="Observe RDP Traffic"/>
+</p>
+<p>
+Back to Wireshark on your Windows 10 VM, filter for RDP (or, tcp.port ==3389) traffic only. Notice how our Windows 10 VM is constantly in traffic. RDP protocol is constantly showing a live stream from one computer to another.
+</p>
+<br />
+<br />
+<br />
+
+
+
+<p><h2> 5. OBSERVE DHCP TRAFFIC </h2></p>
+<p>
+<img src="https://i.imgur.com/9gotxtg.png" height="80%" width="80%" alt="Observe DHCP Traffic"/>
+</p>
+<p>
+Back to Wireshark on your Windows 10 VM, filter for DHCP traffic only.
+</p>
+<br />
+<br />
+
+<p>
+<img src="https://i.imgur.com/JIhQFjE.png" height="80%" width="80%" alt="Observe DHCP Traffic"/>
+</p>
+<p>
+Within the command line, use ipconfig /renew to attempt to issue your VM a new IP address
+</p>
+<br />
 <br />
 
 
 <p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/.png" height="80%" width="80%" alt="Observe DHCP Traffic"/>
 </p>
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+Observve the DHCP traffic appearing in Wireshark.
 </p>
+<br />
 <br />
 
 
-<p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-<br />
-
-
-<p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-<br />
-
-
-<p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-<br />
-
-
-<p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-<br />
-
-<p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-<br />
-
-
-<p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-<br />
-
-
-<p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-<br />
-
-
-<p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-<br />
-
-
-<p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-<br />
-
-
-<p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-<br />
-
-
-<p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-<br />
-
-
-<p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-<br />
-
-
-<p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-<br />
-
-
-<p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-<br />
-
-
-<p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-<br />
+<p><h2>VOILA! 🤓<h/2><p/>
