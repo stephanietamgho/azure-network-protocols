@@ -219,7 +219,7 @@ Back to your Windows 10 VM and command line, try to Ping your Ubuntu VM. Notice 
 <br />
 
 <p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Block ICMP Traffic"/>
+<img src="https://i.imgur.com/vrQe9aD.png" height="80%" width="80%" alt="Block ICMP Traffic"/>
 </p>
 <p>
 Notice this interaction on Wireshark.
