@@ -378,7 +378,7 @@ Back to Wireshark on your Windows 10 VM, filter for DHCP traffic only.
 <img src="https://i.imgur.com/.png" height="80%" width="80%" alt="Observe DHCP Traffic"/>
 </p>
 <p>
-Observve the DHCP traffic appearing in Wireshark.
+Observe the DHCP traffic appearing in Wireshark.
 </p>
 <br />
 <br />
