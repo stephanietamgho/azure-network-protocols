@@ -35,7 +35,7 @@ In this tutorial, we observe various network traffic to and from Azure Virtual M
 <br />
 <p><h3>Create a Ressource Group</h3></p>
 <p>
-<img src="https://i.imgur.com/AdO9wfj.png" height="80%" width="80%" alt="Resource Group creation"/>
+<img src="https://i.imgur.com/AdO9wfj.png" height="50%" width="50%" alt="Resource Group creation"/>
 </p>
 <p>
 In Microsoft Azure, create a Resource Group, give it a name and, assign it a server's location. Here, I chose West 2 Region but you can pick the one you want.
@@ -46,7 +46,7 @@ In Microsoft Azure, create a Resource Group, give it a name and, assign it a ser
 
 <p><h3>Create a Windows 10 VM</h3></p>
 <p>
-<img src="https://i.imgur.com/A2QIfPX.png" height="80%" width="80%" alt="Win 10 VM Creation"/>
+<img src="https://i.imgur.com/A2QIfPX.png" height="50%" width="50%" alt="Win 10 VM Creation"/>
 </p>
 <p>
 Create a Windows 10 Virtual Machine (VM). Make sure you select the previously created Resource Group. 
@@ -55,7 +55,7 @@ Create a Windows 10 Virtual Machine (VM). Make sure you select the previously cr
 <br />
 
 <p>
-<img src="https://i.imgur.com/QZtYL1c.png" height="80%" width="80%" alt="Win 10 VM Creation"/>
+<img src="https://i.imgur.com/QZtYL1c.png" height="50%" width="50%" alt="Win 10 VM Creation"/>
 </p>
 <p>
 Choose a size (at least 2cpus) and set your username and password that will allow you to connect to your VM remotely.
