@@ -273,13 +273,13 @@ In this tutorial, we observe various network traffic to and from Azure Virtual M
 <br />
 
 
-<p><h2> 3. OBSERVE SSH TRAFFIC </h2></p>
+<p><h3> 3. OBSERVE SSH TRAFFIC </h3></p>
 
 <p>
 <img src="https://i.imgur.com/qAZP859.png" height="50%" width="50%" alt="Observe SSH Traffic"/>
 </p>
 <p>
-Back to Wireshark on your Windows 10 VM, filter for SSH traffic only.
++ Back to Wireshark on your Windows 10 VM, filter for SSH traffic only.
 </p>
 <br />
 <br />
@@ -287,111 +287,114 @@ Back to Wireshark on your Windows 10 VM, filter for SSH traffic only.
 <img src="https://i.imgur.com/UdqpvOH.png" height="50%" width="50%" alt="Observe SSH Traffic"/>
 </p>
 <p>
-Back to Powershell on your Windows 10 VM, "SSH into" your Ubuntu VM (via its private IP address). Press enter.
++ Back to Powershell on your Windows 10 VM, "SSH into" your Ubuntu VM (via its private IP address). Press enter.
 </p>
 <br />
 <br />
 
 
 <p>
-<img src="https://i.imgur.com/si5A3oN.png" height="80%" width="80%" alt="Observe SSH Traffic"/>
+<img src="https://i.imgur.com/si5A3oN.png" height="50%" width="50%" alt="Observe SSH Traffic"/>
 </p>
 <p>
-Since its our first try, a warning message will be displayed. Write yes. Then, enter your password. Note: You will not see the letters or keys on the screen so make sure you write the correct password. :) Once you're in, you have full command your Linux VM!
-</p>
-<br />
-<br />
-
++ Since its our first try, a warning message will be displayed. Write yes. </p>
 <p>
-<img src="https://i.imgur.com/5fgacre.png" height="80%" width="80%" alt="Observe SSH Traffic"/>
-</p>
-<p>
-Back to Wireshark, you can observe our first connections with Ubuntu VM. 
++ Then, enter your password. Note: You will not see the letters or keys on the screen so make sure you write the correct password. :) Once you're in, you have full command your Linux VM!
 </p>
 <br />
 <br />
 
 <p>
-<img src="https://i.imgur.com/puaboKW.png" height="80%" width="80%" alt="Observe SSH Traffic"/>
+<img src="https://i.imgur.com/5fgacre.png" height="50%" width="50%" alt="Observe SSH Traffic"/>
 </p>
 <p>
-<img src="https://i.imgur.com/NT98qlj.png" height="80%" width="80%" alt="Observe SSH Traffic"/>
++ Back to Wireshark, you can observe our first connections with Ubuntu VM. 
+</p>
+<br />
+<br />
+
+<p>
+<img src="https://i.imgur.com/puaboKW.png" height="70%" width="70%" alt="Observe SSH Traffic"/>
 </p>
 <p>
-Add a few commands on powershell to observe the traffic on Wireshark. Then exit the SSH connection by typing "Exit" and pressing Enter.
+<img src="https://i.imgur.com/NT98qlj.png" height="40%" width="40%" alt="Observe SSH Traffic"/>
+</p>
+<p>
++ Add a few commands on powershell to observe the traffic on Wireshark. Then, exit the SSH connection by typing "Exit" and pressing Enter.
 </p>
 <br />
 <br />
 
 
 
-<p><h2> 3. OBSERVE DNS TRAFFIC </h2></p>
+<p><h3> 4. OBSERVE DNS TRAFFIC </h3></p>
 <p>
-<img src="https://i.imgur.com/YO7RwHC.png" height="80%" width="80%" alt="Observe DNS Traffic"/>
+<img src="https://i.imgur.com/YO7RwHC.png" height="50%" width="50%" alt="Observe DNS Traffic"/>
 </p>
 <p>
-Back to Wireshark on your Windows 10 VM, filter for DNS traffic only.
-</p>
-<br />
-<br />
-
-
-<p>
-<img src="https://i.imgur.com/PCQq5Bw.png" height="80%" width="80%" alt="Observe DNS Traffic"/>
-</p>
-<p>
-Back to Powershell on your Windows 10 VM, within the command line, use nslookup to see what disney.com's IP address is. 
-</p>
-<br />
-<br />
-
-<p>
-<img src="https://i.imgur.com/kUSuunI.png" height="80%" width="80%" alt="Observe DNS Traffic"/>
-</p>
-<p>
-Observe the DNS traffic being shown in Wireshark.
-</p>
-<br />
-<br />
-<br />
-
-
-<p><h2> 4. OBSERVE RDP TRAFFIC </h2></p>
-<p>
-<img src="https://i.imgur.com/fqH3MYS.png" height="80%" width="80%" alt="Observe RDP Traffic"/>
-</p>
-<p>
-Back to Wireshark on your Windows 10 VM, filter for RDP (or, tcp.port ==3389) traffic only. Notice how our Windows 10 VM is constantly in traffic. RDP protocol is constantly showing a live stream from one computer to another.
-</p>
-<br />
-<br />
-<br />
-
-
-
-<p><h2> 5. OBSERVE DHCP TRAFFIC </h2></p>
-<p>
-<img src="https://i.imgur.com/9gotxtg.png" height="80%" width="80%" alt="Observe DHCP Traffic"/>
-</p>
-<p>
-Back to Wireshark on your Windows 10 VM, filter for DHCP traffic only.
-</p>
-<br />
-<br />
-
-<p>
-<img src="https://i.imgur.com/JIhQFjE.png" height="80%" width="80%" alt="Observe DHCP Traffic"/><p/>
-<p> Within the command line, use ipconfig /renew to attempt to issue your VM a new IP address.
++ Back to Wireshark on your Windows 10 VM, filter for DNS traffic only.
 </p>
 <br />
 <br />
 
 
 <p>
-<img src="https://i.imgur.com/.png" height="80%" width="80%" alt="Observe DHCP Traffic"/>
+<img src="https://i.imgur.com/PCQq5Bw.png" height="50%" width="50%" alt="Observe DNS Traffic"/>
 </p>
 <p>
-Observe the DHCP traffic appearing in Wireshark.
++ Back to Powershell on your Windows 10 VM, within the command line, use nslookup to see what disney.com's IP address is. 
+</p>
+<br />
+<br />
+
+<p>
+<img src="https://i.imgur.com/kUSuunI.png" height="50%" width="50%" alt="Observe DNS Traffic"/>
+</p>
+<p>
++ Observe the DNS traffic being shown in Wireshark.
+</p>
+<br />
+<br />
+
+
+
+<p><h3> 5. OBSERVE RDP TRAFFIC </h3></p>
+<p>
+<img src="https://i.imgur.com/fqH3MYS.png" height="50%" width="50%" alt="Observe RDP Traffic"/>
+</p>
+<p>
++ Back to Wireshark on your Windows 10 VM, filter for RDP (or, tcp.port ==3389) traffic only. Notice how our Windows 10 VM is constantly in traffic. </p>
+<p>
++ RDP protocol is constantly showing a live stream from one computer to another.
+</p>
+<br />
+<br />
+
+
+<p><h3> 6. OBSERVE DHCP TRAFFIC </h3></p>
+<p>
+<img src="https://i.imgur.com/9gotxtg.png" height="50%" width="50%" alt="Observe DHCP Traffic"/>
+</p>
+<p>
++ Back to Wireshark on your Windows 10 VM, filter for DHCP traffic only.
+</p>
+<br />
+<br />
+
+<p>
+<img src="https://i.imgur.com/JIhQFjE.png" height="50%" width="50%" alt="Observe DHCP Traffic"/><p/>
+<p> 
++ Within the command line, use ipconfig /renew to attempt to issue your VM a new IP address.
+</p>
+<br />
+<br />
+
+
+<p>
+<img src="https://i.imgur.com/.png" height="50%" width="50%" alt="Observe DHCP Traffic"/>
+</p>
+<p>
++ Observe the DHCP traffic appearing in Wireshark.
 </p>
 <br />
 <br />
